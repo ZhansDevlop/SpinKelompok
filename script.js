@@ -21,37 +21,115 @@ function acakDanBagi() {
     // UI Loading State
     generateBtn.disabled = true;
     generateBtn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Memproses...";
-    document.getElementById('groupList').innerHTML = "";
     
-    // Tampilkan Animasi
-    document.getElementById('diceLoader').style.display = 'block';
-    document.getElementById('processText').style.display = 'block';
-    document.querySelector('.progress-bar').style.display = 'block';
-
+    // Scroll ke results container
+    const resultsContainer = document.querySelector('.results-container');
+    setTimeout(() => {
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+    
+    // Tampilkan Animasi Loading
+    showLoadingState();
+    
     // Buat floating dice
     createFloatingDice();
 
-    // Delay 1.5 detik agar terlihat seperti sedang memproses
+    // Delay 2-2.5 detik agar terlihat seperti sedang memproses
     setTimeout(() => {
         // Proses pengacakan
         let result = bagiKelompok(allNames, groupCount);
         
-        // Tampilkan hasil
-        renderHasil(result, allNames.length);
+        // Tampilkan hasil dengan animasi staggered
+        renderHasilWithAnimation(result, allNames.length);
         
         // Reset Tombol
         generateBtn.disabled = false;
         generateBtn.innerHTML = "<i class='fas fa-random'></i> ACAK & BAGI KELOMPOK";
         
-        // Sembunyikan animasi
-        document.getElementById('diceLoader').style.display = 'none';
-        document.getElementById('processText').style.display = 'none';
-        document.querySelector('.progress-bar').style.display = 'none';
+        // Sembunyikan animasi loading
+        hideLoadingState();
 
         // Tampilkan action buttons
-        document.getElementById('resultsActions').style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('resultsActions').style.display = 'flex';
+        }, 500);
 
-    }, 1200);
+    }, 2000);
+}
+
+// Tampilkan state loading dengan animasi yang lebih keren
+function showLoadingState() {
+    const resultsContainer = document.querySelector('.results-container');
+    
+    // Bersihkan hasil sebelumnya
+    const groupList = document.getElementById('groupList');
+    groupList.innerHTML = `
+        <div class="loading-state">
+            <div class="loading-content">
+                <div class="dice-loader-big" id="diceLoaderBig">
+                    <span class="dice-big dice-1">🎲</span>
+                    <span class="dice-big dice-2">🎲</span>
+                    <span class="dice-big dice-3">🎲</span>
+                </div>
+                <div class="loading-text">
+                    <h3 id="loadingTextMain">Mengacak Nama...</h3>
+                    <p id="loadingTextSub">Menghitung distribusi kelompok...</p>
+                </div>
+                <div class="progress-bar-big">
+                    <div class="progress-fill-big"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Tambahkan class untuk animasi fade in
+    groupList.classList.add('fade-in');
+    
+    // Animasi text cycling
+    let textIndex = 0;
+    const texts = [
+        { main: 'Mengacak Nama...', sub: 'Menghitung distribusi kelompok...' },
+        { main: 'Memproses Data...', sub: 'Menyiapkan hasil...' },
+        { main: 'Hampir Selesai!', sub: 'Memverifikasi hasil...' }
+    ];
+    
+    const textCycleInterval = setInterval(() => {
+        textIndex = (textIndex + 1) % texts.length;
+        const mainText = document.getElementById('loadingTextMain');
+        const subText = document.getElementById('loadingTextSub');
+        
+        if (mainText && subText) {
+            mainText.style.opacity = '0';
+            subText.style.opacity = '0';
+            
+            setTimeout(() => {
+                if (mainText && subText) {
+                    mainText.textContent = texts[textIndex].main;
+                    subText.textContent = texts[textIndex].sub;
+                    mainText.style.opacity = '1';
+                    subText.style.opacity = '1';
+                }
+            }, 300);
+        }
+    }, 800);
+    
+    // Simpan interval ID untuk dibersihkan nanti
+    resultsContainer.dataset.textCycleInterval = textCycleInterval;
+}
+
+// Sembunyikan state loading
+function hideLoadingState() {
+    const resultsContainer = document.querySelector('.results-container');
+    
+    // Hapus interval jika ada
+    if (resultsContainer.dataset.textCycleInterval) {
+        clearInterval(parseInt(resultsContainer.dataset.textCycleInterval));
+        delete resultsContainer.dataset.textCycleInterval;
+    }
+    
+    // Fade out loading
+    const groupList = document.getElementById('groupList');
+    groupList.classList.remove('fade-in');
 }
 
 // Logika membagi kelompok (Fisher-Yates Shuffle)
@@ -80,10 +158,11 @@ function bagiKelompok(namaArray, jumlahGrup) {
     return grupObjek;
 }
 
-// Menampilkan hasil ke HTML dengan desain colorful
-function renderHasil(grupObjek, totalNames) {
+// Menampilkan hasil ke HTML dengan animasi staggered yang smooth
+function renderHasilWithAnimation(grupObjek, totalNames) {
     const container = document.getElementById('groupList');
     container.innerHTML = "";
+    container.classList.remove('fade-in');
 
     let html = "";
     const colors = ['#6C63FF', '#FF6584', '#17A2B8', '#FFC107', '#00b894'];
@@ -93,12 +172,12 @@ function renderHasil(grupObjek, totalNames) {
         const color = colors[index % colors.length];
         
         // Membuat daftar anggota HTML
-        let daftarAnggota = anggota.map(nama => 
-            `<span class="member-item">👤 ${nama}</span>`
+        let daftarAnggota = anggota.map((nama, idx) => 
+            `<span class="member-item" style="animation-delay: ${index * 0.15 + idx * 0.05}s;">👤 ${nama}</span>`
         ).join("");
 
         html += `
-            <div class="group-box" style="animation-delay: ${index * 0.1}s">
+            <div class="group-box" style="animation-delay: ${index * 0.15}s">
                 <div class="group-title">
                     <span><i class="fas fa-users" style="color: ${color}; margin-right: 8px;"></i>Kelompok ${namaGrup}</span>
                     <span class="group-count-badge" style="background: linear-gradient(135deg, ${color}, ${shadeColor(color, 20)});">${anggota.length} Anggota</span>
@@ -111,8 +190,16 @@ function renderHasil(grupObjek, totalNames) {
 
     container.innerHTML = html;
     
+    // Trigger animation dengan fade in
+    container.classList.add('fade-in');
+    
     // Update stats
     updateStats(Object.keys(grupObjek).length, totalNames);
+}
+
+// Menampilkan hasil ke HTML dengan desain colorful (backup function)
+function renderHasil(grupObjek, totalNames) {
+    renderHasilWithAnimation(grupObjek, totalNames);
 }
 
 // Utility function untuk shade color
