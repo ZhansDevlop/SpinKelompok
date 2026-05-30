@@ -574,6 +574,92 @@ input[type="number"]:focus {
     100% { width: 0%; }
 }
 
+/* LOADING STATE STYLES */
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.loading-content {
+    text-align: center;
+    width: 100%;
+}
+
+.dice-loader-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.dice-big {
+    font-size: 3.5rem;
+    animation: diceBounceBig 1.5s ease-in-out infinite;
+}
+
+.dice-big.dice-1 { animation-delay: 0s; }
+.dice-big.dice-2 { animation-delay: 0.2s; }
+.dice-big.dice-3 { animation-delay: 0.4s; }
+
+@keyframes diceBounceBig {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+.loading-text h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.loading-text p {
+    color: #999;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.progress-bar-big {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-fill-big {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background-size: 200% 100%;
+    animation: loadingBig 2.5s ease-in-out infinite;
+}
+
+@keyframes loadingBig {
+    0% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Fade In Animation */
+#groupList.fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* RESULTS CONTAINER */
 .results-container {
     flex: 1;
@@ -694,6 +780,8 @@ input[type="number"]:focus {
     justify-content: space-between;
     align-items: center;
     font-size: 1.1rem;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .group-count-badge {
@@ -724,6 +812,8 @@ input[type="number"]:focus {
     font-weight: 500;
     transition: 0.3s;
     position: relative;
+    animation: slideUp 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .member-item:hover {
@@ -819,6 +909,7 @@ input[type="number"]:focus {
     .results-container {
         padding: 20px;
         max-width: 100%;
+        max-height: none;
     }
 
     .btn {
@@ -837,6 +928,27 @@ input[type="number"]:focus {
 
     .stats-box {
         grid-template-columns: 1fr;
+    }
+
+    .group-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .results-actions {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        flex: 1 !important;
+    }
+
+    .dice-loader-big {
+        gap: 10px;
+    }
+
+    .dice-big {
+        font-size: 2.5rem;
     }
 }
 
@@ -869,5 +981,61 @@ input[type="number"]:focus {
     .panel,
     .results-container {
         padding: 15px;
+    }
+
+    .results-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .results-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .panel-badge {
+        padding: 3px 10px;
+        font-size: 0.65rem;
+    }
+
+    .group-box {
+        padding: 15px;
+    }
+
+    .member-item {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .group-count-badge {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    .dice-loader-big {
+        height: 80px;
+        gap: 5px;
+    }
+
+    .dice-big {
+        font-size: 2rem;
+    }
+
+    .loading-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .loading-text p {
+        font-size: 0.85rem;
+    }
+
+    .floating-dice {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .floating-dice-item {
+        font-size: 1.5rem;
+        margin: 0 3px;
     }
 }
