@@ -271,7 +271,7 @@ function createFloatingDice() {
     const container = document.getElementById('floatingDice');
     container.innerHTML = '';
     
-    const dice = ['🎲', '🎪', '🎯', '✨'];
+    const dice = ['', '', '', ''];
     for (let i = 0; i < 3; i++) {
         const item = document.createElement('span');
         item.className = 'floating-dice-item';
