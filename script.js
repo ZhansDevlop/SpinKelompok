@@ -30,9 +30,6 @@ function acakDanBagi() {
     
     // Tampilkan Animasi Loading
     showLoadingState();
-    
-    // Buat floating dice
-    createFloatingDice();
 
     // Delay 2-2.5 detik agar terlihat seperti sedang memproses
     setTimeout(() => {
@@ -165,7 +162,7 @@ function renderHasilWithAnimation(grupObjek, totalNames) {
     container.classList.remove('fade-in');
 
     let html = "";
-    const colors = ['#6C63FF', '#FF6584', '#17A2B8', '#FFC107', '#00b894'];
+    const colors = ['#2563eb', '#dc2626', '#0891b2', '#ea580c', '#16a34a'];
 
     let index = 0;
     for (const [namaGrup, anggota] of Object.entries(grupObjek)) {
@@ -266,22 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
     cekInput();
 });
 
-// Floating Dice Function
-function createFloatingDice() {
-    const container = document.getElementById('floatingDice');
-    container.innerHTML = '';
-    
-    const dice = ['', '', '', ''];
-    for (let i = 0; i < 3; i++) {
-        const item = document.createElement('span');
-        item.className = 'floating-dice-item';
-        item.textContent = dice[Math.floor(Math.random() * dice.length)];
-        item.style.left = Math.random() * 100 + 'px';
-        item.style.animationDelay = (i * 0.3) + 's';
-        container.appendChild(item);
-    }
-}
-
 // Copy hasil ke clipboard
 function copyResults() {
     const groupList = document.getElementById('groupList');
@@ -315,8 +296,8 @@ function printResults() {
             <title>Hasil Pengelompokan - Spin Kelompok</title>
             <style>
                 body { font-family: Arial, sans-serif; padding: 20px; }
-                h1 { color: #6C63FF; text-align: center; }
-                .group-box { margin-bottom: 20px; padding: 15px; border-left: 5px solid #6C63FF; background: #f9f9f9; }
+                h1 { color: #2563eb; text-align: center; }
+                .group-box { margin-bottom: 20px; padding: 15px; border-left: 5px solid #2563eb; background: #f9f9f9; }
                 .group-title { font-weight: bold; margin-bottom: 10px; }
                 .member-item { display: inline-block; background: white; padding: 5px 10px; margin: 3px; border-radius: 15px; }
             </style>
