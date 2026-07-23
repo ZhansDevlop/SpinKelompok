@@ -1,156 +1,76 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎲 Spin Kelompok - Pembagi Kelompok Otomatis</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Kelompok</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="topbar">
+    <h1>Spin Kelompok</h1>
+    <button class="btn btn-secondary" id="themeToggle" onclick="toggleTheme()">Mode Gelap</button>
+  </div>
 
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
+  <div class="app-container">
+    <!-- KOLOM INPUT -->
+    <div class="panel">
+      <h2>1. Masukkan Data</h2>
+
+      <div class="form-group">
+        <label>Nama Anggota (pisahkan dengan ENTER):</label>
+        <textarea
+          id="namesInput"
+          placeholder="Budi\nSiti\nJoko\nAni\nBella"
+          oninput="cekInput()"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Jumlah Kelompok:</label>
+        <input type="number" id="groupCount" value="2" min="2" max="20" />
+      </div>
+
+      <button class="btn btn-generate" id="generateBtn" onclick="acakDanBagi()">
+        ACAK & BAGI KELOMPOK
+      </button>
+      <button class="btn btn-reset" onclick="resetHalaman()">Reset</button>
+
+      <div style="margin-top: 20px; font-size: 0.85rem; color: #666; line-height: 1.5">
+        <p><strong>Cara Pakai:</strong></p>
+        <ol>
+          <li>Masukkan daftar nama.</li>
+          <li>Tentukan jumlah kelompok.</li>
+          <li>Klik tombol <strong>ACAK & BAGI</strong>.</li>
+          <li>Selesai! Kelompok akan langsung muncul.</li>
+        </ol>
+      </div>
     </div>
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="header-content">
-            <h1 class="main-title">
-                <span class="dice-animation">🎲</span>
-                <span class="gradient-text">SPIN KELOMPOK</span>
-                <span class="dice-animation">🎲</span>
-            </h1>
-            <p class="subtitle">✨ Buat kelompok dengan acak secara otomatis dalam hitungan detik ✨</p>
-            <div class="feature-pills">
-                <span class="pill"><i class="fas fa-zap"></i> Super Cepat</span>
-                <span class="pill"><i class="fas fa-random"></i> Acak Sempurna</span>
-                <span class="pill"><i class="fas fa-smile"></i> Mudah Digunakan</span>
-            </div>
-        </div>
+    <!-- KOLOM ANIMASI (Middle) -->
+    <div class="animation-panel">
+      <div class="loader-icon" id="loaderIcon"></div>
+      <div class="process-text" id="processText">Memproses...</div>
     </div>
 
-    <div class="app-container">
-        
-        <!-- KOLOM INPUT -->
-        <div class="panel input-panel">
-            <div class="panel-header">
-                <h2><i class="fas fa-pencil-alt"></i> Input Data</h2>
-                <span class="panel-badge">Langkah 1</span>
-            </div>
-            
-            <div class="form-group">
-                <label><i class="fas fa-users"></i> Nama Anggota</label>
-                <p class="helper-text">Pisahkan setiap nama dengan ENTER (tekan Enter setelah setiap nama)</p>
-                <textarea id="namesInput" 
-                          placeholder="Contoh:&#10;Budi&#10;Siti&#10;Joko&#10;Ani&#10;Bella&#10;Rudi&#10;Dina&#10;Eko" 
-                          oninput="cekInput()"></textarea>
-                <div class="input-counter">
-                    <small id="nameCount">0 nama</small>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label><i class="fas fa-object-group"></i> Jumlah Kelompok</label>
-                <div class="input-with-controls">
-                    <button class="btn-control" onclick="decreaseGroups()"><i class="fas fa-minus"></i></button>
-                    <input type="number" id="groupCount" value="3" min="2" max="20">
-                    <button class="btn-control" onclick="increaseGroups()"><i class="fas fa-plus"></i></button>
-                </div>
-            </div>
-            
-            <button class="btn btn-generate" id="generateBtn" onclick="acakDanBagi()">
-                <i class="fas fa-random"></i> ACAK & BAGI KELOMPOK
-            </button>
-            <button class="btn btn-reset" onclick="resetHalaman()">
-                <i class="fas fa-redo"></i> Reset
-            </button>
-
-            <div class="info-box">
-                <div class="info-header">
-                    <i class="fas fa-book"></i>
-                    <strong>Panduan Penggunaan</strong>
-                </div>
-                <ol>
-                    <li>📝 Masukkan daftar nama anggota (minimal 2 nama)</li>
-                    <li>🎯 Tentukan berapa banyak kelompok yang diinginkan</li>
-                    <li>⚡ Klik tombol <strong>ACAK & BAGI KELOMPOK</strong></li>
-                    <li>✨ Lihat hasil pengelompokan di panel kanan</li>
-                </ol>
-            </div>
-
-            <div class="stats-box">
-                <div class="stat-item">
-                    <span class="stat-icon">👥</span>
-                    <div>
-                        <small>Total Nama</small>
-                        <strong id="totalNames">0</strong>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-icon">👫</span>
-                    <div>
-                        <small>Kelompok</small>
-                        <strong id="totalGroups">3</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- KOLOM ANIMASI (Middle) -->
-        <div class="animation-panel">
-            <div class="animation-content">
-                <div class="loader-container">
-                    <div class="dice-loader" id="diceLoader">
-                        <span class="dice-1">🎲</span>
-                        <span class="dice-2">🎲</span>
-                        <span class="dice-3">🎲</span>
-                    </div>
-                </div>
-                <div class="process-text" id="processText">Mengacak</div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- KOLOM HASIL -->
-        <div class="results-container">
-            <div class="results-header">
-                <h2><i class="fas fa-trophy"></i> Hasil Pengelompokan</h2>
-                <span class="panel-badge">Langkah 2</span>
-            </div>
-            
-            <div id="groupList">
-                <div class="empty-state">
-                    <div class="empty-state-icon">🎪</div>
-                    <p class="empty-title">Belum ada pengelompokan</p>
-                    <p class="empty-desc">Isi data di panel sebelah kiri dan klik tombol ACAK & BAGI</p>
-                </div>
-            </div>
-
-            <div class="results-actions" id="resultsActions" style="display: none;">
-                <button class="btn btn-action" onclick="copyResults()">
-                    <i class="fas fa-copy"></i> Salin Hasil
-                </button>
-                <button class="btn btn-action" onclick="printResults()">
-                    <i class="fas fa-print"></i> Cetak
-                </button>
-            </div>
-        </div>
-
+    <!-- KOLOM HASIL -->
+    <div class="results-container">
+      <h2>2. Hasil Pengelompokan</h2>
+      <div id="groupList" class="empty-state">
+        <p>Belum ada hasil.</p>
+      </div>
     </div>
+  </div>
 
-    <!-- Floating Dice Elements -->
-    <div class="floating-dice" id="floatingDice"></div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-label">Dibuat oleh</span>
+      <span class="creator-name">ZhansDevlop</span>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
