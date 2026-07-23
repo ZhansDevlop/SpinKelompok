@@ -1,14 +1,14 @@
 :root {
-    --primary: #6C63FF;
-    --secondary: #3F3D56;
-    --accent: #FF6584;
-    --success: #00b894;
-    --warning: #FFC107;
-    --info: #17A2B8;
-    --light-purple: #f3f0ff;
-    --light-pink: #ffe5ec;
-    --light-cyan: #e0f7fa;
-    --light-yellow: #fff9e6;
+    --primary: #2563eb;
+    --secondary: #1e293b;
+    --accent: #dc2626;
+    --success: #16a34a;
+    --warning: #ea580c;
+    --info: #0891b2;
+    --light-blue: #dbeafe;
+    --light-red: #fee2e2;
+    --light-green: #dcfce7;
+    --light-orange: #ffedd5;
     --white: #ffffff;
 }
 
@@ -24,7 +24,7 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #1e1b4b 50%, #7c2d12 100%);
     min-height: 100vh;
     padding: 20px;
     display: flex;
@@ -54,7 +54,7 @@ body {
 .shape-1 {
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, #FF6584, transparent);
+    background: radial-gradient(circle, #dc2626, transparent);
     top: -50px;
     left: -50px;
     animation: float 20s ease-in-out infinite;
@@ -63,7 +63,7 @@ body {
 .shape-2 {
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, #6C63FF, transparent);
+    background: radial-gradient(circle, #2563eb, transparent);
     top: 50%;
     right: -50px;
     animation: float 25s ease-in-out infinite reverse;
@@ -72,7 +72,7 @@ body {
 .shape-3 {
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, #00b894, transparent);
+    background: radial-gradient(circle, #16a34a, transparent);
     bottom: -50px;
     left: 30%;
     animation: float 22s ease-in-out infinite;
@@ -81,7 +81,7 @@ body {
 .shape-4 {
     width: 280px;
     height: 280px;
-    background: radial-gradient(circle, #FFC107, transparent);
+    background: radial-gradient(circle, #ea580c, transparent);
     bottom: 10%;
     right: 5%;
     animation: float 23s ease-in-out infinite reverse;
@@ -114,7 +114,7 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #FFD700, #FF6B9D, #00E5FF);
+    background: linear-gradient(135deg, #fbbf24, #f87171, #60a5fa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -190,11 +190,11 @@ body {
     max-width: 450px;
     height: fit-content;
     animation: fadeInUp 0.8s ease-out;
-    border: 2px solid rgba(108, 99, 255, 0.1);
+    border: 2px solid rgba(37, 99, 235, 0.1);
 }
 
 .input-panel {
-    background: linear-gradient(135deg, var(--white) 0%, var(--light-purple) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
 }
 
 @keyframes fadeInUp {
@@ -226,7 +226,7 @@ body {
 }
 
 .panel-badge {
-    background: linear-gradient(135deg, var(--accent), #FF6B9D);
+    background: linear-gradient(135deg, var(--accent), #ef4444);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
@@ -250,7 +250,7 @@ label {
 
 .helper-text {
     font-size: 0.8rem;
-    color: #999;
+    color: #64748b;
     margin-bottom: 10px;
     font-style: italic;
 }
@@ -259,24 +259,25 @@ textarea {
     width: 100%;
     height: 150px;
     padding: 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #e2e8f0;
     border-radius: 12px;
     resize: none;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fafafa, #fff5f9);
+    background: linear-gradient(135deg, #f8fafc, #eff6ff);
     transition: 0.3s;
     font-size: 0.95rem;
+    color: var(--secondary);
 }
 
 textarea:focus {
     border-color: var(--primary);
-    background: var(--light-purple);
+    background: var(--light-blue);
     outline: none;
-    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 textarea::placeholder {
-    color: #ccc;
+    color: #cbd5e1;
     font-style: italic;
 }
 
@@ -286,7 +287,7 @@ textarea::placeholder {
 }
 
 .input-counter small {
-    color: #999;
+    color: #64748b;
     font-size: 0.85rem;
 }
 
@@ -313,28 +314,29 @@ textarea::placeholder {
 }
 
 .btn-control:hover {
-    background: var(--light-purple);
+    background: var(--light-blue);
     transform: scale(1.05);
 }
 
 input[type="number"] {
     flex: 1;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
     font-family: inherit;
-    background: linear-gradient(135deg, #fafafa, #fff5f9);
+    background: linear-gradient(135deg, #f8fafc, #eff6ff);
     transition: 0.3s;
     font-size: 1rem;
     font-weight: 700;
     text-align: center;
+    color: var(--secondary);
 }
 
 input[type="number"]:focus {
     border-color: var(--primary);
-    background: var(--light-purple);
+    background: var(--light-blue);
     outline: none;
-    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 /* BUTTONS */
@@ -357,14 +359,14 @@ input[type="number"]:focus {
 }
 
 .btn-generate {
-    background: linear-gradient(135deg, var(--primary), #8e86ff);
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
     color: white;
-    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 .btn-generate:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(108, 99, 255, 0.5);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
 }
 
 .btn-generate:active:not(:disabled) {
@@ -372,25 +374,25 @@ input[type="number"]:focus {
 }
 
 .btn-generate:disabled {
-    background: #ccc;
+    background: #cbd5e1;
     cursor: not-allowed;
     opacity: 0.7;
 }
 
 .btn-reset {
-    background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
     color: var(--secondary);
-    border: 2px solid #d0d0d0;
+    border: 2px solid #cbd5e1;
 }
 
 .btn-reset:hover {
-    background: linear-gradient(135deg, #e8e8e8, #e0e0e0);
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
     border-color: var(--secondary);
     transform: translateY(-2px);
 }
 
 .btn-action {
-    background: linear-gradient(135deg, var(--info), #13c2c2);
+    background: linear-gradient(135deg, var(--info), #0e7490);
     color: white;
     flex: 1;
     font-size: 0.85rem;
@@ -398,12 +400,12 @@ input[type="number"]:focus {
 }
 
 .btn-action:hover {
-    box-shadow: 0 6px 15px rgba(23, 162, 184, 0.3);
+    box-shadow: 0 6px 15px rgba(6, 182, 212, 0.3);
 }
 
 /* INFO BOX */
 .info-box {
-    background: linear-gradient(135deg, var(--light-purple), #f8f5ff);
+    background: linear-gradient(135deg, var(--light-blue), #f0f9ff);
     border-left: 4px solid var(--primary);
     padding: 18px;
     border-radius: 12px;
@@ -438,7 +440,7 @@ input[type="number"]:focus {
     gap: 15px;
     margin-top: 25px;
     padding: 20px;
-    background: linear-gradient(135deg, var(--light-cyan), var(--light-yellow));
+    background: linear-gradient(135deg, var(--light-green), var(--light-orange));
     border-radius: 12px;
 }
 
@@ -454,7 +456,7 @@ input[type="number"]:focus {
 
 .stat-item small {
     display: block;
-    color: #999;
+    color: #64748b;
     font-size: 0.75rem;
     font-weight: 600;
 }
@@ -472,14 +474,14 @@ input[type="number"]:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, var(--white), var(--light-purple));
+    background: linear-gradient(135deg, var(--white), var(--light-blue));
     border-radius: 25px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     padding: 40px 20px;
     animation: fadeInUp 0.8s ease-out 0.2s backwards;
     position: relative;
     overflow: hidden;
-    border: 2px solid rgba(108, 99, 255, 0.1);
+    border: 2px solid rgba(37, 99, 235, 0.1);
 }
 
 .animation-panel::before {
@@ -489,7 +491,7 @@ input[type="number"]:focus {
     right: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
     animation: pulse 4s ease-in-out infinite;
 }
 
@@ -555,7 +557,7 @@ input[type="number"]:focus {
 .progress-bar {
     width: 100%;
     height: 4px;
-    background: #e0e0e0;
+    background: #e2e8f0;
     border-radius: 2px;
     margin-top: 20px;
     overflow: hidden;
@@ -619,7 +621,7 @@ input[type="number"]:focus {
 }
 
 .loading-text p {
-    color: #999;
+    color: #64748b;
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }
@@ -627,7 +629,7 @@ input[type="number"]:focus {
 .progress-bar-big {
     width: 100%;
     height: 6px;
-    background: #e0e0e0;
+    background: #e2e8f0;
     border-radius: 3px;
     margin-top: 20px;
     overflow: hidden;
@@ -664,14 +666,14 @@ input[type="number"]:focus {
 .results-container {
     flex: 1;
     min-width: 320px;
-    background: linear-gradient(135deg, var(--white), var(--light-pink));
+    background: linear-gradient(135deg, var(--white), var(--light-red));
     padding: 35px;
     border-radius: 25px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     max-height: 750px;
     overflow-y: auto;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
-    border: 2px solid rgba(255, 107, 157, 0.1);
+    border: 2px solid rgba(220, 38, 38, 0.1);
 }
 
 .results-header {
@@ -693,7 +695,7 @@ input[type="number"]:focus {
 
 .empty-state {
     text-align: center;
-    color: #aaa;
+    color: #94a3b8;
     margin-top: 60px;
     margin-bottom: 60px;
 }
@@ -706,19 +708,19 @@ input[type="number"]:focus {
 
 .empty-title {
     font-size: 1.2rem;
-    color: #999;
+    color: #64748b;
     font-weight: 600;
 }
 
 .empty-desc {
     font-size: 0.9rem;
-    color: #bbb;
+    color: #94a3b8;
     margin-top: 10px;
 }
 
 /* GROUP BOX WITH MULTIPLE COLORS */
 .group-box {
-    background: linear-gradient(135deg, var(--light-purple) 0%, #f8f5ff 100%);
+    background: linear-gradient(135deg, var(--light-blue) 0%, #f0f9ff 100%);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 18px;
@@ -726,7 +728,7 @@ input[type="number"]:focus {
     animation: slideUp 0.5s ease-out forwards;
     opacity: 0;
     transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
     position: relative;
     overflow: hidden;
 }
@@ -738,38 +740,38 @@ input[type="number"]:focus {
     right: 0;
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, rgba(108, 99, 255, 0.05), transparent);
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.05), transparent);
     border-radius: 50%;
 }
 
 .group-box:nth-child(1) {
-    background: linear-gradient(135deg, var(--light-purple) 0%, #f8f5ff 100%);
+    background: linear-gradient(135deg, var(--light-blue) 0%, #f0f9ff 100%);
     border-left-color: var(--primary);
 }
 
 .group-box:nth-child(2) {
-    background: linear-gradient(135deg, var(--light-pink) 0%, #fff5f9 100%);
+    background: linear-gradient(135deg, var(--light-red) 0%, #fef2f2 100%);
     border-left-color: var(--accent);
 }
 
 .group-box:nth-child(3) {
-    background: linear-gradient(135deg, var(--light-cyan) 0%, #e0f7fa 100%);
-    border-left-color: var(--info);
+    background: linear-gradient(135deg, var(--light-green) 0%, #f0fdf4 100%);
+    border-left-color: var(--success);
 }
 
 .group-box:nth-child(4) {
-    background: linear-gradient(135deg, var(--light-yellow) 0%, #fff9e6 100%);
+    background: linear-gradient(135deg, var(--light-orange) 0%, #fef5f1 100%);
     border-left-color: var(--warning);
 }
 
 .group-box:nth-child(5n+5) {
-    background: linear-gradient(135deg, #f0f9ff, #f5f0ff);
-    border-left-color: var(--success);
+    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+    border-left-color: var(--info);
 }
 
 .group-box:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(108, 99, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.2);
 }
 
 .group-title {
@@ -785,13 +787,13 @@ input[type="number"]:focus {
 }
 
 .group-count-badge {
-    background: linear-gradient(135deg, var(--primary), #8e86ff);
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
     color: white;
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .members-list {
@@ -808,7 +810,7 @@ input[type="number"]:focus {
     font-size: 0.9rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     color: var(--secondary);
-    border: 2px solid #f0f0f0;
+    border: 2px solid #f1f5f9;
     font-weight: 500;
     transition: 0.3s;
     position: relative;
@@ -818,9 +820,9 @@ input[type="number"]:focus {
 
 .member-item:hover {
     border-color: var(--primary);
-    background: var(--light-purple);
+    background: var(--light-blue);
     transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 @keyframes slideUp {
@@ -852,7 +854,7 @@ input[type="number"]:focus {
 }
 
 .floating-dice-item {
-    display: inline-block;
+    display: none;
     font-size: 2rem;
     animation: floatUp 3s ease-in infinite;
     margin: 0 5px;
@@ -869,7 +871,7 @@ input[type="number"]:focus {
 }
 
 .results-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f1f5f9;
     border-radius: 10px;
 }
 
@@ -880,6 +882,28 @@ input[type="number"]:focus {
 
 .results-container::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+
+/* FOOTER CREDIT */
+.footer-credit {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    z-index: 50;
+    font-weight: 600;
+}
+
+.footer-credit a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-credit a:hover {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: underline;
 }
 
 /* RESPONSIVE DESIGN */
@@ -950,6 +974,10 @@ input[type="number"]:focus {
     .dice-big {
         font-size: 2.5rem;
     }
+
+    .footer-credit {
+        font-size: 0.7rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -998,31 +1026,9 @@ input[type="number"]:focus {
         font-size: 0.65rem;
     }
 
-    .group-box {
-        padding: 15px;
+    .footer-credit {
+        font-size: 0.65rem;
+        bottom: 5px;
+        left: 5px;
     }
-
-    .member-item {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-    }
-
-    .group-count-badge {
-        padding: 4px 10px;
-        font-size: 0.75rem;
-    }
-
-    .dice-loader-big {
-        height: 80px;
-        gap: 5px;
-    }
-
-    .dice-big {
-        font-size: 2rem;
-    }
-
-    .loading-text h3 {
-        font-size: 1.2rem;
-    }
-
-    .loading-
+}
